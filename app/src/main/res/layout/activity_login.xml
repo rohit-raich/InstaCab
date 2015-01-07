@@ -32,8 +32,13 @@
         android:gravity="center"
         android:hint="@string/EnterEmailId"
         android:inputType="text"
-
-        />
+        android:autoText="false"
+        style="@style/Base.TextAppearance.AppCompat.Body1"
+        android:clickable="true"
+        android:editable="false"
+        android:enabled="true"
+        android:focusable="true"
+        android:focusableInTouchMode="true" />
 
     <EditText
         android:id="@+id/txtPassword"
@@ -43,7 +48,8 @@
         android:layout_marginTop="40dp"
         android:gravity="center"
         android:hint="@string/EnterPassword"
-        android:inputType="textPassword" />
+        android:inputType="textPassword"
+        android:password="true" />
 
 
     <LinearLayout

@@ -1,17 +1,60 @@
 package com.myfare.search.instacab;
 
-import android.support.v7.app.ActionBarActivity;
+import android.content.Context;
 import android.os.Bundle;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.Toast;
 
 
 public class Login_Activity extends ActionBarActivity {
+
+    ImageButton facebookButton, googleButton;
+    EditText editTextEmaiId, editTextPassword;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        facebookButton = (ImageButton) findViewById(R.id.imageButtonFacebook);
+        googleButton = (ImageButton) findViewById(R.id.imageButtonGoogle);
+        editTextEmaiId = (EditText) findViewById(R.id.txtusername);
+        editTextPassword = (EditText) findViewById(R.id.txtPassword);
+
+        facebookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Login_Activity.this, "facebook button", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        googleButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(Login_Activity.this, "google button", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        editTextEmaiId.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            @Override
+            public void onFocusChange(View v, boolean hasFocus) {
+                editTextEmaiId.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                        imm.showSoftInput(editTextEmaiId, InputMethodManager.SHOW_IMPLICIT);
+                    }
+                });
+            }
+        });
+        editTextEmaiId.requestFocus();
+
     }
 
 
